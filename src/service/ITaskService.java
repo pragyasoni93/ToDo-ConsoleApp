@@ -6,12 +6,12 @@ import dto.Task;
 
 public interface ITaskService {
 
-    public List<Task> addTask(Task task);
+    public boolean addTask(Task task);
 
     public List<Task> updateTask(Task task);
 
     public List<Task> deleteTask(int taskId);
 
-    public void showTasks();
+    public List<Task> showTasks();
 
 }

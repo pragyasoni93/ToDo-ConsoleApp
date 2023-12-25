@@ -11,60 +11,77 @@ public class ToDoController {
 
   private ITaskService taskService = new TaskService();
 
-  public static void runToDoApp() {
-    showMenu();
-    String userAction = getUserInput("Enter the Action Number");
-    performAction(Integer.parseInt(userAction));
+  public void runToDoApp() {
+    while (true) {
+      showMenu();
+      String userAction = getUserInput("Enter the Action Number");
+      performAction(Integer.parseInt(userAction));
+    }
+
   }
 
-  private static void showMenu() {
+  private void showMenu() {
     System.out.println("Welcome to the ToDo App!");
     System.out.println("Action Menu: ");
     System.out.println("1. Add a new task");
     System.out.println("2. Update an existing task");
     System.out.println("3. Delete an existing task");
     System.out.println("4. List all Tasks");
+    System.out.println("5. Exit");
   }
 
-  private static String getUserInput(String inputMessage) {
+  private String getUserInput(String inputMessage) {
     System.out.print(inputMessage + " : ");
     return System.console().readLine();
   }
 
-  private static List<Task> performAction(int action) {
+  private void performAction(int action) {
     switch (action) {
       case 1:
-        return addTask();
+        addTask();
+        break;
       case 2:
-        return updateTask();
+        updateTask();
+        break;
       case 3:
-        return deleteTask();
+        deleteTask();
+        break;
       case 4:
-        return showTasks();
+        showTasks();
+        break;
+      case 5:
+        System.exit(200);
       default:
         System.out.println("Invalid Action");
-        return null;
     }
   }
 
-  private static List<Task> addTask() {
+  private boolean addTask() {
     String taskName = getUserInput("Enter the Task Name");
-    String taskDeadline = getUserInput("Enter the Task Deadline (Optional). Press Enter to skip");
-    Task task = new Task(1, taskName, TaskStatus.PENDING, taskDeadline);
+    String taskDeadline = getUserInput(
+        "Enter the Task Deadline in format as 01-Jan-2024 [Optional, Press Enter to skip] ");
+
+    Task task = new Task(Task.getTaskAutoId(), taskName, TaskStatus.PENDING, taskDeadline);
     return taskService.addTask(task);
 
   }
 
-  private static List<Task> updateTask() {
-    return null;
+  private boolean updateTask() {
+    return false;
   }
 
-  private static List<Task> deleteTask() {
-    return null;
+  private boolean deleteTask() {
+    return false;
   }
 
-  private static List<Task> showTasks() {
-    return null;
+  private void showTasks() {
+    List<Task> tasks = taskService.showTasks();
+    System.out.println("-----------------------------------------------");
+    System.out.println("Task Table : ");
+    tasks.forEach(task -> {
+      System.out.println(task.getTaskId() + " | " + task.getTaskName() + " | " + task.getTaskStatus());
+      System.out.println();
+    });
   }
 
 }

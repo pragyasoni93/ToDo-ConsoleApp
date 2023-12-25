@@ -2,14 +2,21 @@ package service;
 
 import java.util.List;
 
+import dao.TaskRepository;
 import dto.Task;
 
 public class TaskService implements ITaskService {
+    
+    TaskRepository taskRepository;
+
+    public TaskService() {
+        this.taskRepository = new TaskRepository();
+    }
 
     @Override
-    public List<Task> addTask(Task task) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addTask'");
+    public boolean addTask(Task task) {
+        return taskRepository.addTask(task);
+        // throw new UnsupportedOperationException("Unimplemented method 'addTask'");
     }
 
     @Override
@@ -25,9 +32,9 @@ public class TaskService implements ITaskService {
     }
 
     @Override
-    public void showTasks() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'showTasks'");
+    public List<Task> showTasks() {
+        return taskRepository.getTasks();
+        // throw new UnsupportedOperationException("Unimplemented method 'showTasks'");
     }
     
 }
