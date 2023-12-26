@@ -32,7 +32,7 @@ public class TaskService implements ITaskService {
     }
 
     @Override
-    public List<Task> showTasks() {
+    public List<Task> getTasks() {
         return taskRepository.getTasks();
         // throw new UnsupportedOperationException("Unimplemented method 'showTasks'");
     }

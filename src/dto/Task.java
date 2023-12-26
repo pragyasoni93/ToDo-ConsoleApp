@@ -27,6 +27,10 @@ public class Task {
         return String.valueOf(taskStatus);
     }
 
+    public String getTaskDeadline() {
+        return deadline;
+    }
+
     public static int getTaskAutoId() {
         taskAutoId++;
         return taskAutoId;

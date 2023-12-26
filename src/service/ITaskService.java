@@ -12,6 +12,6 @@ public interface ITaskService {
 
     public List<Task> deleteTask(int taskId);
 
-    public List<Task> showTasks();
+    public List<Task> getTasks();
 
 }

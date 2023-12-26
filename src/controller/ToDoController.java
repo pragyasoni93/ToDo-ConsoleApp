@@ -47,7 +47,7 @@ public class ToDoController {
         deleteTask();
         break;
       case 4:
-        showTasks();
+        getTasks();
         break;
       case 5:
         System.exit(200);
@@ -74,14 +74,16 @@ public class ToDoController {
     return false;
   }
 
-  private void showTasks() {
-    List<Task> tasks = taskService.showTasks();
-    System.out.println("-----------------------------------------------");
-    System.out.println("Task Table : ");
+  private void getTasks() {
+    List<Task> tasks = taskService.getTasks();
+    System.out.println("-------------------------------------------------------------------------------");
+    System.out.println("ID" + " | " + "TASK NAME" + " | " + "TASK STATUS" + " | " + "DEADLINE");
+    System.out.println("-------------------------------------------------------------------------------");
     tasks.forEach(task -> {
-      System.out.println(task.getTaskId() + " | " + task.getTaskName() + " | " + task.getTaskStatus());
-      System.out.println();
+      System.out.println(task.getTaskId() + " | " + task.getTaskName() + " | " + task.getTaskStatus() + " | "
+          + task.getTaskDeadline());
     });
+    System.out.println("-------------------------------------------------------------------------------");
   }
 
 }
