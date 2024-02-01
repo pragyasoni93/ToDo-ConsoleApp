@@ -1,6 +1,6 @@
 # ToDo-ConsoleApp
 
-A simple console-based ToDo app written in Java 8.
+A simple console-based ToDo app written in Java 8. This project is for absolute beginners who are willing to learn Java. A few features have not been implemented intentionally so that the learners can implement and have a hands-on. 
 
 ## Table of Contents
 
